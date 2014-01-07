@@ -1,0 +1,12 @@
+{
+	"database": {
+		"name": "Database name",
+		"host": "Database host",
+		"user": "Database user",
+		"password": "Database password"
+	},
+	"app": {
+		"port": App's port,
+		"token_secret": "Secret to hash session token"
+	}
+}

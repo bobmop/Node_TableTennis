@@ -8,14 +8,15 @@ var express = require('express'),
   fs = require("fs"),
   path = require('path'),
   crypto = require('crypto'),
-  mysql = require("mysql");
+  mysql = require("mysql"),
+  config = require("./config.json");
 
 
 var logFile = fs.createWriteStream("./log", {flags: "a"});
 
 var app = express();
 app.configure(function(){
-  app.set('port', process.env.PORT || 50888);
+  app.set('port', process.env.PORT || config.app.port);
   app.use(express.favicon());
   app.use(express.logger({stream: logFile}));
   app.use(express.bodyParser());
@@ -29,7 +30,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-var cipherSecret = "MyTokenSecret";
+var cipherSecret = config.app.token_secret;
 
 function getCipher() {
   return crypto.createCipher("aes256", cipherSecret);
@@ -41,10 +42,10 @@ function getDecipher() {
 var sessionUser;
 
 var db = mysql.createConnection({
-  user: 'tabten',
-  password: '1234',
-  host: 'localhost',
-  database: 'tabten'
+  user: config.database.user,
+  password: config.database.password,
+  host: config.database.host,
+  database: config.database.name
 });
 db.connect(function (err) {
   if (err)
