@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>TischTennis</title>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="/javascripts/app.js"></script>
+    </head>
+    <body>
+        <form id="login">
+        	<label>username: <input id="username" /></label>
+        	<label>password: <input type="password" id="password" /></label>
+        	<input type="submit" />
+        </form>
+        <button type="submit" id="getusers">getuisers</button>
+        <button type="submit" id="add">adduser</button>
+        <form id="adduser" style="display: none">
+            <label>username<input id="add_username" /></label>
+            <label>password<input type="password" id="add_password" /></label>
+            <label>confirm<input type="password" id="add_confirm" /></label>
+            <input type="submit" />
+        </form>
+    </body>
+</html>
